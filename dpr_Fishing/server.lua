@@ -27,18 +27,10 @@ AddEventHandler('dpr_Fishing:SellFish', function(Nom, Item, Price)
     if haveFish then
         xPlayer.addMoney(Price)
         xPlayer.removeInventoryItem(Item, 1)
-        local xPlayers	= ESX.GetPlayers()
-		for i=1, #xPlayers, 1 do
-			local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-			Citizen.Wait(500) 
-			TriggerClientEvent('esx:showAdvancedNotification', xPlayers[i], 'Poissonerie', 'Revente', "Vous venez de vendre ~b~x1 "..Nom.." ~s~pour ~r~"..Price.."$", 'CHAR_BOATSITE', 1)
-		end
+		Citizen.Wait(500) 
+		TriggerClientEvent('esx:showAdvancedNotification', _src, 'Poissonerie', 'Revente', "Vous venez de vendre ~b~x1 "..Nom.." ~s~pour ~r~"..Price.."$", 'CHAR_BOATSITE', 1)
     else
-        local xPlayers	= ESX.GetPlayers()
-		for i=1, #xPlayers, 1 do
-			local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-			Citizen.Wait(500) 
-			TriggerClientEvent('esx:showAdvancedNotification', xPlayers[i], 'Poissonerie', 'Revente', "Vous n'avez pas suffisament de ~b~"..Nom.." ~s~pour en vendre !", 'CHAR_BOATSITE', 1)
-		end
+		Citizen.Wait(500) 
+		TriggerClientEvent('esx:showAdvancedNotification', _src, 'Poissonerie', 'Revente', "Vous n'avez pas suffisament de ~b~"..Nom.." ~s~pour en vendre !", 'CHAR_BOATSITE', 1)
     end
 end)
